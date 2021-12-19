@@ -1,3 +1,54 @@
-/**
- * Fonts
-*/
+$base-color: #c6538c;
+$border-dark: rgba($base-color, 0.88);
+
+.alert {
+  border: 1px solid $border-dark;
+}
+
+CSS OUTPUT
+.alert {
+  border: 1px solid rgba(198, 83, 140, 0.88);
+}
+SCSS SYNTAX
+$variable: value 1;
+.rule-1 {
+  value: $variable;
+}
+
+$variable: value 2;
+.rule-2 {
+  value: $variable;
+}
+.rule-1 {
+  value: value 1;
+}
+
+.rule-2 {
+  value: value 2;
+}
+
+@use "sass:math" as math;
+
+$bg: #777;
+
+
+@function text($bg) {
+  @if(lightness($bg) > 50) {
+    @return #000;   
+  } @else {
+    @return #FFF;
+  }
+}
+
+@mixin dc($color) { // dc is short for dynamic color
+  background: $color;
+  color: text($color);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include dc($bg);
+}
